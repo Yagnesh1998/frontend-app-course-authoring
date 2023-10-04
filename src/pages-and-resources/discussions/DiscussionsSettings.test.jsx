@@ -492,7 +492,7 @@ describe.each([
 
     act(async () => {
       userEvent.click(await screen.findByLabelText('Select Piazza'));
-      userEvent.click(await screen.findByText(messages.nextButton.defaultMessage));
+      userEvent.click(await screen.getByText(messages.nextButton.defaultMessage));
 
       waitForElementToBeRemoved(screen.getByRole('status'));
       if (enablePIISharing) {
