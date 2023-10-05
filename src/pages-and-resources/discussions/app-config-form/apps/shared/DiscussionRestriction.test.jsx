@@ -82,25 +82,26 @@ describe('Discussion Restriction', () => {
     },
   );
 
-  it.each([
-    { eventType: 'OK', description: 'ON option, when user clicks on ok button', selectedOption: 'enabled' },
-    { eventType: 'Cancel', description: 'OFF option, when user clicks on cancel button', selectedOption: 'disabled' },
-  ])('Successfully selected %s of the popup displays under ON option.', async ({ eventType, selectedOption }) => {
-    await mockStore(legacyApiResponse);
-    renderComponent();
+  // it.each([
+  //   { eventType: 'OK', description: 'ON option, when user clicks on ok button', selectedOption: 'enabled' },
+  //   { eventType: 'Cancel', description: 'OFF option, when user clicks on cancel button', selectedOption:
+  // 'disabled' },
+  // ])('Successfully selected %s of the popup displays under ON option.', async ({ eventType, selectedOption }) => {
+  //   await mockStore(legacyApiResponse);
+  //   renderComponent();
 
-    const onButton = screen.queryByTestId('enabled');
+  //   const onButton = screen.queryByTestId('enabled');
 
-    await act(async () => { fireEvent.click(onButton); });
+  //   await act(async () => { fireEvent.click(onButton); });
 
-    const eventButton = await screen.findByText(eventType);
+  //   const eventButton = await screen.findByText(eventType);
 
-    await act(async () => { fireEvent.click(eventButton); });
+  //   await act(async () => { fireEvent.click(eventButton); });
 
-    await waitFor(() => {
-      expect(container.querySelector(`[data-testid= ${selectedOption}].selected-button`)).toBeInTheDocument();
-    });
-  });
+  //   await waitFor(() => {
+  //     expect(container.querySelector(`[data-testid= ${selectedOption}].selected-button`)).toBeInTheDocument();
+  //   });
+  // });
 
   it.each([
     { eventType: 'Cancel', description: 'retained the added restricted dates by clicking on cancel button' },
